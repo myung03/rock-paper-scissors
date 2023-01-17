@@ -15,6 +15,53 @@
 
     <script>
 
+    function getComputerChoice () {
+        const options = ['rock','paper','scissors'];
+        return options[Math.floor(Math.random()* 3)];
+    }
+
+    function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+    function playRound(playerSelection, computerSelection) {
+        const choice = playerSelection.toLowerCase();
+        console.log(`You chose: ${choice}`);
+        console.log(`Computer chose: ${computerSelection}`);
+        if ((choice === 'rock' && computerSelection == 'scissors') || 
+         (choice === 'paper' && computerSelection == 'rock') || 
+         (choice === 'scissors' && computerSelection == 'paper')) 
+         {return `You Win! ${capitalizeFirstLetter(choice)} beats ${computerSelection}.`}
+        else if ((choice === 'rock' && computerSelection == 'paper') ||
+        (choice === 'paper' && computerSelection == 'scissors') ||
+        (choice === 'scissors' && computerSelection == 'rock'))
+        {return `You Win! ${capitalizeFirstLetter(choice)} beats ${computerSelection}.`}
+        else if (choice === computerSelection)
+        {return "Tie! Please play again."}
+        else {return "Invalid input. Please choose rock, paper, or scissors."};
+
+    }
+
+   
+
+    function game() {
+        for (let i = 0; i < 5; i++) {
+            const round = (playRound(prompt("Select rock, paper, or scissors"), getComputerChoice()))
+            let playerCounter = 0;
+            let compCounter = 0;
+            if (round.includes("Win!")) {
+                playerCounter = playerCounter++
+            }
+            else if (round.includes("Lose!")) {
+                compCounter = compCounter++
+            }
+            else {i - 1}
+            console.log(round)
+            console.log(`Player score is ${playerCounter} and Computer score is ${compCounter}`)
+            
+    }
+}
+
 
 
 
